@@ -1,0 +1,28 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "insert-customers",
+        "author": "mihai",
+        "comment": "Insert base customer",
+        "changes": [
+          {
+            "insertMany": {
+              "collectionName": "users",
+              "documents": {
+                "$rawJson": [
+                  {
+                    "name": "John"
+                  },
+                  {
+                    "name": "Otika"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

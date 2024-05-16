@@ -1,0 +1,9 @@
+{
+  "databaseChangeLog": [
+    {
+      "include": {
+        "file": "db-json/00_initial-data.json"
+      }
+    }
+  ]
+}

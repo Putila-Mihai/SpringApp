@@ -1,0 +1,33 @@
+type Query{
+    users: [User]
+    userById(id: ID!): User
+}
+
+type Mutation{
+    createUser(id: ID!, name: String!, email: String!, password: String!, town: String!): User
+    updateUser(id: ID!, name: String!, email: String!, password: String!, town: String!): User
+    deleteUser(id: ID!): User
+}
+type User{
+    id: ID!
+    name: String!
+    email: String!
+    password: String!
+    town: String!
+}
+
+type TrackInfo {
+    occurrences: Int!
+    time: String!
+}
+
+type Subscription {
+    users: [User]
+    stats: [UserTrackInfoMap]
+}
+
+type UserTrackInfoMap {
+    userId: ID!
+    trackInfo: TrackInfo!
+}
+
