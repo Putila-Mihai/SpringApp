@@ -4,7 +4,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 @Service(ValidatorUser.BEAN_ID)
-public class ValidatorUser implements Validator{
+public class ValidatorUser implements Validator {
     public static final String BEAN_ID = "ROLE_USER";
 
     @Override

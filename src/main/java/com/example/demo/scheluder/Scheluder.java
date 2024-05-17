@@ -1,17 +1,13 @@
 package com.example.demo.scheluder;
 
 import com.example.demo.aop.TrackCounter;
-import com.example.demo.model.TrackInfo;
 import com.example.demo.service.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
-import java.time.OffsetDateTime;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @Configuration
@@ -27,7 +23,7 @@ public class Scheluder {
     }
 
     @Scheduled(fixedRate = 5000)//5 sec
-    public void showStats(){
+    public void showStats() {
 //        Logger logger = LoggerFactory.getLogger(Scheluder.class.getName());
 //        logger.info("Schedule");
 //
@@ -39,8 +35,8 @@ public class Scheluder {
 //        logger.info(message);
     }
 
-    @Scheduled( fixedDelay = 5,timeUnit = TimeUnit.MINUTES)//5 minutes
-    public void deleteStats5Min(){
+    @Scheduled(fixedDelay = 5, timeUnit = TimeUnit.MINUTES)//5 minutes
+    public void deleteStats5Min() {
 //        Logger logger = LoggerFactory.getLogger(Scheluder.class.getName());
 //        logger.info("Schedule delete stats longer than 5 minutes");
 //        trackCounter.updateStats(OffsetDateTime.now().minusMinutes(5));

@@ -5,7 +5,6 @@ import com.example.demo.model.UserDoc;
 import com.example.demo.repository.UserNoSQLRepo;
 import com.example.demo.service.UserService;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -34,15 +33,6 @@ class UserServiceTest {
     private static UserDoc mihai;
     private static UserDoc alex;
 
-    //    @BeforeAll
-//    public static void setUp() {
-//        UserDoc alex = new UserDoc(1L,"asd","asd@asd","asd","asd");
-//        UserDoc mihai = new UserDoc(2L,"dsa","dsa@dsa","dsa","dsa");
-//        Mockito.when(userNoSQLRepo.findById(alex.getId()))
-//                .thenReturn(Optional.of(alex));
-//        Mockito.when(userNoSQLRepo.findAll())
-//                .thenReturn(List.of(alex,mihai));
-//    }
 
     @BeforeAll
     public static void setUp() {
@@ -100,12 +90,14 @@ class UserServiceTest {
         assertThat(result.getName())
                 .isEqualTo("asd2");
     }
+
     @Test
     void deleteUser() {
         Mockito.doNothing().when(userNoSQLRepo).deleteById(alex.getId());
         userService.deleteUser(alex.getId());
         Mockito.verify(userNoSQLRepo, Mockito.times(1)).deleteById(alex.getId());
     }
+
     @Test
     void getUserCounter() {
         Mockito.when(trackCounter.getUserCounter())
@@ -114,6 +106,7 @@ class UserServiceTest {
         assertThat(result)
                 .isEqualTo(null);
     }
+
     @Test
     void increment() {
         Mockito.doNothing().when(trackCounter).incrementCounter(alex.getId(), null);

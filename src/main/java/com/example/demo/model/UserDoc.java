@@ -11,10 +11,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @Document(collection = "User")
 public class UserDoc {
-        @Id
-        private Long id;
-        private String name;
-        private String email;
-        private String password;
-        private String town;
+    @Id
+    private Long id;
+    private String name;
+    private String email;
+    private String password;
+    private String town;
 }
