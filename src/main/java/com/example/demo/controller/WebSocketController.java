@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.TrackInfo;
-import com.example.demo.model.User;
 import com.example.demo.model.UserDoc;
 import com.example.demo.service.UserService;
 import lombok.Getter;
@@ -42,14 +41,16 @@ public class WebSocketController {
     }
 
     @MutationMapping
-    UserDoc updateUser(@Argument Long id, @Argument String name, @Argument String email, @Argument String password, @Argument String town) {
+    UserDoc updateUser(@Argument Long id, @Argument String name, @Argument String email,
+                       @Argument String password, @Argument String town) {
         UserDoc user = new UserDoc(id, name, email, password, town);
         logger.info("User with ID {} is updated...", id);
         return userService.updateUser(id, user);
     }
 
     @MutationMapping
-    UserDoc createUser(@Argument Long id, @Argument String name, @Argument String email, @Argument String password, @Argument String town) {
+    UserDoc createUser(@Argument Long id, @Argument String name, @Argument String email,
+                       @Argument String password, @Argument String town) {
         UserDoc user = new UserDoc(id, name, email, password, town);
         logger.info("User is created...");
         return userService.createUser(user);
@@ -73,6 +74,7 @@ public class WebSocketController {
         return Flux.just(userTrackInfoList);
     }
 }
+
 @Getter
 @Setter
 class UserTrackInfoMap {

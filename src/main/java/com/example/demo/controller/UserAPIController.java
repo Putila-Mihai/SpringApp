@@ -1,16 +1,11 @@
 package com.example.demo.controller;
 
-import com.example.demo.aop.TrackCounter;
 import com.example.demo.model.TrackInfo;
-import com.example.demo.model.User;
 import com.example.demo.model.UserDoc;
 import com.example.demo.service.UserService;
 import jakarta.annotation.security.RolesAllowed;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -68,7 +63,7 @@ public class UserAPIController {
         logger.info("User with ID " + id + " is deleted...");
         userService.deleteUser(id);
     }
-    //make the method accessible only to users with the role ADMIN
+
     @RolesAllowed("ADMIN")
     @PostMapping("/addUser")
     public ResponseEntity<UserDoc> addUser(@RequestBody UserDoc user) {

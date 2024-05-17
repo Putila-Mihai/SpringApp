@@ -5,7 +5,6 @@ import com.example.demo.exception.NoUserFoundException;
 import com.example.demo.model.TrackInfo;
 import com.example.demo.model.UserDoc;
 import com.example.demo.repository.UserNoSQLRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
@@ -43,7 +42,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public UserDoc updateUser(Long id,final UserDoc user) {
+    public UserDoc updateUser(Long id, final UserDoc user) {
         Optional<UserDoc> userOptional = userRepository.findById(id);
         if (userOptional.isPresent()) {
             UserDoc updatedUser = userOptional.get();

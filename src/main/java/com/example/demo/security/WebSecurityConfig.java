@@ -1,9 +1,7 @@
 package com.example.demo.security;
 
-import com.example.demo.controller.WebSocketController;
 import com.example.demo.validators.FactoryValidator;
 import com.example.demo.validators.Validator;
-import com.example.demo.validators.ValidatorUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +10,6 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractAuthenticationFilterConfigurer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -35,6 +32,7 @@ public class WebSecurityConfig {
     public WebSecurityConfig(FactoryValidator factoryValidator) {
         this.factoryValidator = factoryValidator;
     }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(authorizeRequests -> {
@@ -45,7 +43,6 @@ public class WebSecurityConfig {
                     authorizeRequests.anyRequest().authenticated();
 
                 })
-//                .formLogin(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .httpBasic(Customizer.withDefaults())
                 .build();

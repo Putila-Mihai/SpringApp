@@ -14,7 +14,7 @@ public class TrackCounter {
 
     private final Map<Long, TrackInfo> counter = new HashMap<>();
 
-    public void incrementCounter(Long id, OffsetDateTime time){
+    public void incrementCounter(Long id, OffsetDateTime time) {
         TrackInfo trackInfo = counter.getOrDefault(id, new TrackInfo(0, time));
         trackInfo.incrementOccurrences();
         trackInfo.setTime(time);

@@ -8,7 +8,6 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.logging.Logger;
 
@@ -36,11 +35,12 @@ public class CounterAspect {
 
         userService.increment(id, OffsetDateTime.now());
 
-        logger.info("User with ID " + id + " entered. Total number of loggings: ");
+        logger.info("User with ID " + id + " entered. Total number of logins: ");
     }
 
     @Pointcut("execution(* com.example.demo.controller.UserAPIController.resetStats(..))")
-    public void resetStatsPointcut() {}
+    public void resetStatsPointcut() {
+    }
 
     @AfterReturning("resetStatsPointcut()")
     public void resetStats(JoinPoint joinPoint) {
